@@ -1,6 +1,6 @@
 # DT-In-The-House
 
-Make Donal Trump Speak Again -- A Stack LSTM RNN that speaks like Donal Trump by generating character one at a time.
+Make Donal Trump Speak Again -- a stack LSTM RNN that speaks like Donal Trump by generating character one at a time.
 
 ### Run the Program
 ```python
