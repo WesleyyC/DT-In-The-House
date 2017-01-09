@@ -10,12 +10,12 @@ from keras.callbacks import ModelCheckpoint
 from keras.utils import np_utils
 from scipy.misc import logsumexp
 
-# create mapping of unique chars to integers, and a reverse mapping
+# load the mapping
 char_to_int = pickle.load(open("index/char_to_int.json", "r"))
 int_to_char  = pickle.load(open("index/int_to_char.json", "r"))
 seq_length = 20
 
-# define the LSTM model
+# redefine the stack LSTM
 model = Sequential()
 model.add(LSTM(512, input_shape=(seq_length, 1), return_sequences=True))
 model.add(Dropout(0.5))
@@ -23,25 +23,25 @@ model.add(LSTM(512))
 model.add(Dropout(0.5))
 model.add(Dense(len(char_to_int), activation='softmax'))
 
-# load the network weights
+# load the model parameter
 filename = "model-DT.hdf5"
 model.load_weights(filename)
 model.compile(loss='categorical_crossentropy', optimizer='adam')
 
-# helper softmax
+# helper softmax to make sure sum (a)<1
 def log_softmax(vec):
 	return vec - logsumexp(vec)
 def softmax(vec):
 	return numpy.exp(log_softmax(vec))
 
-# helper for sampling
+# helper for sampling with multinomial
 def sample_i(a, temp=1.0):
 	a = numpy.log(a) / temp
 	a = softmax(a)
-	a /= (1 + 1e-5)
+	a /= (1 + 1e-5) # make sure sum (a)<1
 	return numpy.argmax(numpy.random.multinomial(1,a,1))
 
-# pick a random seed
+# setup the seed and result
 seed_text = "i have the best temperament"
 seed_text = seed_text[0:seq_length]
 pattern = [char_to_int[char] for char in seed_text]
