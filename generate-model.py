@@ -1,5 +1,6 @@
-# Larger LSTM Network to Generate Text for Alice in Wonderland
 import numpy
+import pickle
+
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import Dropout
@@ -15,6 +16,10 @@ raw_text = raw_text.lower()
 # create mapping of unique chars to integers
 chars = sorted(list(set(raw_text)))
 char_to_int = dict((c, i) for i, c in enumerate(chars))
+int_to_char = dict((i, c) for i, c in enumerate(chars))
+
+pickle.dump(char_to_int, open("index/char_to_int.json", "w"))
+pickle.dump(int_to_char, open("index/int_to_char.json", "w"))
 
 # summarize the loaded data
 n_chars = len(raw_text)
