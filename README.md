@@ -3,6 +3,9 @@
 Make Donal Trump Speak Again -- a stack LSTM RNN that speaks like Donal Trump by generating character one at a time.
 
 ### Run the Program
+
+RNN traning is generally computationally expensive, so you should run the program with GPUs if possible.
+
 ```python
 
 # run the following program to
@@ -11,12 +14,12 @@ Make Donal Trump Speak Again -- a stack LSTM RNN that speaks like Donal Trump by
 # 3) generate a sample speech
 
 # generate a model
-python generate-model.py
+python train_model.py
 
 # choose the best model from model-tmp folder and name it model-DT.hdf5
 
 # generate sample speech from the model
-python generate-from-model.py
+python generate_speech.py
 
 ```
 
