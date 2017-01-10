@@ -31,3 +31,6 @@ python generate_speech.py
 - The model is capturing some phrases like "hillary clinton" and "thank you, and god bless!".
 - I ran into the problem where the RNN generate a repeated pattern if I stick with the softmax result. Therefore, I adjust the softmax result with a diversity factor and run a multinomial instead.
 
+### Special Note:
+- The project is inspired by Andrej Karpathy's note on [how effective RNN could be.](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)
+- [@RyanMarcus](https://github.com/RyanMarcus)'s [Edgar Allan Poetry](https://github.com/RyanMarcus/EdgarAllanPoetry) has inspired me to keep track of char index and add a diversity factor with the multinomial.
