@@ -11,8 +11,8 @@ from keras.utils import np_utils
 from scipy.misc import logsumexp
 
 # load the mapping
-char_to_int = pickle.load(open("index/char_to_int.json", "r"))
-int_to_char  = pickle.load(open("index/int_to_char.json", "r"))
+char_to_int = pickle.load(open("char_to_int.json", "r"))
+int_to_char  = pickle.load(open("int_to_char.json", "r"))
 seq_length = 20
 
 # redefine the stack LSTM
