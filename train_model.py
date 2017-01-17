@@ -18,8 +18,8 @@ chars = sorted(list(set(raw_text)))
 char_to_int = dict((c, i) for i, c in enumerate(chars))
 int_to_char = dict((i, c) for i, c in enumerate(chars))
 
-pickle.dump(char_to_int, open("index/char_to_int.json", "w"))
-pickle.dump(int_to_char, open("index/int_to_char.json", "w"))
+pickle.dump(char_to_int, open("char_to_int.json", "w"))
+pickle.dump(int_to_char, open("int_to_char.json", "w"))
 
 # stat
 n_chars = len(raw_text)
